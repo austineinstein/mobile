@@ -1,0 +1,7 @@
+{
+  "name": "Xchange",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue-vite"
+}
