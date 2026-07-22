@@ -2,17 +2,18 @@
   <ion-page>
     <ion-header>
       <ion-toolbar>
-        <ion-title>Tab 3</ion-title>
+        <ion-title>Orfra</ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-content :fullscreen="true">
       <ion-header collapse="condense">
         <ion-toolbar>
-          <ion-title size="large">Tab 3</ion-title>
+          <ion-title size="large">Orfra</ion-title>
         </ion-toolbar>
       </ion-header>
 
-      <div class="swaps" style="padding:16px;">
+      <div class="swaps">
+        <div class="hero-pill">Active opportunities</div>
         <ion-grid>
           <ion-row>
             <ion-col size="12" v-for="swap in swaps" :key="swap.id">
@@ -23,7 +24,7 @@
                 </ion-card-header>
                 <ion-card-content>
                   <p>{{ swap.details }}</p>
-                  <div style="display:flex; gap:8px; justify-content:flex-end; margin-top:12px;">
+                  <div class="actions">
                     <ion-button size="small" @click.prevent="acceptSwap(swap)" :disabled="swap.status !== 'open'">Accept</ion-button>
                     <ion-button size="small" fill="clear" @click.prevent="viewSwap(swap)">View</ion-button>
                   </div>
@@ -55,3 +56,27 @@ function viewSwap(swap: any) {
   alert(`${swap.pair}\n\n${swap.details}\nStatus: ${swap.status}`);
 }
 </script>
+
+<style scoped>
+.swaps {
+  padding: 18px;
+}
+
+.hero-pill {
+  display: inline-flex;
+  padding: 6px 10px;
+  margin-bottom: 10px;
+  border-radius: 999px;
+  background: rgba(56, 189, 248, 0.16);
+  color: #e0f2fe;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  margin-top: 12px;
+}
+</style>
