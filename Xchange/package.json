@@ -1,20 +1,35 @@
 {
-  "name": "Xchange",
+  "name": "xchange-mobile",
   "private": true,
-  "version": "0.0.1",
+  "version": "1.0.0",
+  "description": "Xchange mobile app for crypto swaps",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc && vite build",
+    "build:release": "npm run build",
     "preview": "vite preview",
     "test:e2e": "cypress run",
     "test:unit": "vitest",
-    "lint": "eslint ."
+    "test:unit:ci": "vitest run",
+    "lint": "eslint . --ext .js,.ts,.vue",
+    "ci:check": "npm run lint && npm run test:unit:ci && npm run build",
+    "cap:sync": "npx cap sync",
+    "android:sync": "npm run build && npx cap sync android",
+    "android:open": "npx cap open android",
+    "ios:sync": "npm run build && npx cap sync ios",
+    "ios:open": "npx cap open ios",
+    "release": "npm run build && npx cap sync"
+  },
+  "engines": {
+    "node": ">=18"
   },
   "dependencies": {
+    "@capacitor/android": "8.4.1",
     "@capacitor/app": "8.1.0",
     "@capacitor/core": "8.4.1",
     "@capacitor/haptics": "8.0.2",
+    "@capacitor/ios": "8.4.1",
     "@capacitor/keyboard": "8.0.5",
     "@capacitor/status-bar": "8.0.2",
     "@ionic/vue": "^8.0.0",
@@ -38,6 +53,5 @@
     "vite": "^5.0.0",
     "vitest": "^0.34.6",
     "vue-tsc": "^2.1.10"
-  },
-  "description": "An Ionic project"
+  }
 }

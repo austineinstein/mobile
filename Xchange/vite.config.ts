@@ -16,6 +16,19 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
+  build: {
+    sourcemap: false,
+    chunkSizeWarningLimit: 1000,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vue: ['vue', 'vue-router'],
+          ionic: ['@ionic/vue', '@ionic/vue-router'],
+          icons: ['ionicons']
+        }
+      }
+    }
+  },
   test: {
     globals: true,
     environment: 'jsdom'
